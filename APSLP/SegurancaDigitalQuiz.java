@@ -3,117 +3,85 @@ import java.util.Scanner;
 public class SegurancaDigitalQuiz {
 
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        int opcaoMenu = 0;
-        int pontuacao = 0;
-        int totalPerguntas = 4; // 2 para cada tópico
-
-        System.out.println("================================================");
-        System.out.println("   BEM-VINDO AO QUIZ DE SEGURANÇA DIGITAL!");
-        System.out.println("================================================");
-        System.out.println("Aprenda a se proteger no mundo virtual.");
-
-        // O 'while' garante que o programa continue rodando até o usuário escolher sair (opção 4)
-        while (opcaoMenu != 4) {
-            System.out.println("\n--- MENU PRINCIPAL ---");
-            System.out.println("1. Jogar Tópico 1: Criação de Senhas Seguras");
-            System.out.println("2. Jogar Tópico 2: Prevenção contra Golpes (Phishing)");
-            System.out.println("3. Ver minha Pontuação Atual");
+        Scanner leitor = new Scanner(System.in);
+        int opcao = 0;
+        
+        while (opcao != 4) {
+            System.out.println("\n==========================================");
+            System.out.println("      GUIA DE SEGURANÇA DIGITAL - APS     ");
+            System.out.println("==========================================");
+            System.out.println("1. Quiz: Senhas e Segurança de Contas");
+            System.out.println("2. Quiz: Golpes e Phishing");
+            System.out.println("3. Mito ou Verdade (Dicas Rápidas)");
             System.out.println("4. Sair do Programa");
-            System.out.print("Escolha uma opção: ");
+            System.out.print("\nEscolha uma opção: ");
+            
+            opcao = leitor.nextInt();
 
-            opcaoMenu = scanner.nextInt();
-            scanner.nextLine(); // Limpa o buffer do teclado após ler o número
-
-            // O 'switch' gerencia a navegação do menu
-            switch (opcaoMenu) {
+            switch (opcao) {
                 case 1:
-                    System.out.println("\n*** TÓPICO 1: SENHAS SEGURAS ***");
-                    
-                    System.out.println("\nPergunta 1: Qual das opções abaixo representa a senha mais segura para suas contas?");
-                    System.out.println("1) A sua data de nascimento (ex: 15041998)");
-                    System.out.println("2) Uma palavra comum seguida de 123 (ex: brasil123)");
-                    System.out.println("3) Uma combinação de letras (maiúsculas e minúsculas), números e símbolos (ex: T3rR@#9zL!)");
-                    System.out.print("Sua resposta: ");
-                    int resp1 = scanner.nextInt();
-                    
-                    // O 'if' verifica a resposta e dá o feedback
-                    if (resp1 == 3) {
-                        System.out.println("-> CORRETO! Senhas fortes devem misturar diferentes tipos de caracteres e não conter informações pessoais.");
-                        pontuacao++;
-                    } else {
-                        System.out.println("-> ERRADO. A resposta certa era a 3. Evite dados pessoais ou sequências óbvias que são fáceis de adivinhar por hackers.");
-                    }
-
-                    System.out.println("\nPergunta 2: É uma boa prática usar a mesma senha para o seu e-mail, redes sociais e banco?");
-                    System.out.println("1) Sim, pois assim é mais fácil de lembrar.");
-                    System.out.println("2) Não, pois se um cibercriminoso descobrir a senha, ele terá acesso a todas as suas contas.");
-                    System.out.print("Sua resposta: ");
-                    int resp2 = scanner.nextInt();
-
-                    if (resp2 == 2) {
-                        System.out.println("-> CORRETO! O reuso de senhas é perigoso. Se um site vazar seus dados, todas as outras contas estarão em risco.");
-                        pontuacao++;
-                    } else {
-                        System.out.println("-> ERRADO. A resposta certa era a 2. Nunca reutilize senhas, especialmente em contas importantes.");
-                    }
+                    executarQuizSenhas(leitor);
                     break;
-
                 case 2:
-                    System.out.println("\n*** TÓPICO 2: PREVENÇÃO CONTRA GOLPES (PHISHING) ***");
-                    
-                    System.out.println("\nPergunta 3: Você recebeu um e-mail urgente dizendo ser do seu banco, com um link solicitando a atualização imediata da sua senha. O que você faz?");
-                    System.out.println("1) Clico no link e atualizo minha senha rapidamente para não bloquear a conta.");
-                    System.out.println("2) Ignoro o e-mail, não clico em nada e abro o aplicativo oficial do banco para verificar se há alguma notificação.");
-                    System.out.print("Sua resposta: ");
-                    int resp3 = scanner.nextInt();
-
-                    if (resp3 == 2) {
-                        System.out.println("-> CORRETO! Bancos nunca pedem senhas por link de e-mail ou SMS. Isso é um golpe clássico de Phishing.");
-                        pontuacao++;
-                    } else {
-                        System.out.println("-> ERRADO. A resposta certa era a 2. Clicar em links de e-mails suspeitos pode roubar seus dados bancários.");
-                    }
-
-                    System.out.println("\nPergunta 4: O que é a Autenticação de Dois Fatores (2FA)?");
-                    System.out.println("1) Uma camada extra de segurança que exige um segundo código (ex: SMS ou app) além da senha.");
-                    System.out.println("2) Um antivírus que bloqueia dois tipos de vírus diferentes.");
-                    System.out.print("Sua resposta: ");
-                    int resp4 = scanner.nextInt();
-
-                    if (resp4 == 1) {
-                        System.out.println("-> CORRETO! A 2FA protege sua conta mesmo que alguém descubra sua senha, pois o invasor não terá o segundo código.");
-                        pontuacao++;
-                    } else {
-                        System.out.println("-> ERRADO. A resposta certa era a 1. A 2FA é essencial para proteger contas de redes sociais e e-mails.");
-                    }
+                    executarQuizPhishing(leitor);
                     break;
-
                 case 3:
-                    System.out.println("\n--- SUA PONTUAÇÃO ---");
-                    System.out.println("Você tem " + pontuacao + " ponto(s) de um total de " + totalPerguntas + " possíveis.");
-                    if (pontuacao == totalPerguntas) {
-                        System.out.println("Parabéns! Você é um especialista em segurança digital!");
-                    } else if (pontuacao >= 2) {
-                        System.out.println("Muito bem, mas ainda há espaço para melhorar seus hábitos online.");
-                    } else {
-                        System.out.println("Cuidado! Você precisa estudar mais sobre como se proteger na internet.");
-                    }
+                    exibirMitoVerdade(leitor);
                     break;
-
                 case 4:
-                    System.out.println("\nEncerrando o Guia de Segurança Digital...");
-                    System.out.println("Obrigado por jogar! Pontuação final: " + pontuacao + "/" + totalPerguntas);
-                    System.out.println("Lembre-se: Na internet, desconfie sempre e proteja seus dados!");
+                    System.out.println("\nEncerrando... Lembre-se: Segurança digital se faz todo dia!");
                     break;
-
                 default:
-                    // Caso o usuário digite um número que não está no menu
-                    System.out.println("\nOpção inválida! Por favor, digite um número de 1 a 4.");
-                    break;
+                    System.out.println("\nOpção inválida! Tente novamente.");
             }
         }
-        
-        scanner.close(); 
+        leitor.close();
+    }
+
+    public static void main(String[] args) { /* Este método é apenas ilustrativo da estrutura interna */ }
+    
+    public static void executarQuizSenhas(Scanner leitor) {
+        System.out.println("\n--- QUIZ: SENHAS ---");
+        System.out.println("Pergunta: Qual destas senhas é considerada a mais forte?");
+        System.out.println("1) 12345678\n2) nome@2024\n3) Cafe!Com#Leite2026");
+        System.out.print("Sua resposta: ");
+        int resp = leitor.nextInt();
+
+        if (resp == 3) {
+            System.out.println("CORRETO! Senhas longas, com símbolos e números são muito difíceis de quebrar.");
+        } else {
+            System.out.println("ERRADO. Senhas óbvias ou curtas podem ser descobertas em segundos por hackers.");
+        }
+    }
+
+    public static void executarQuizPhishing(Scanner leitor) {
+        System.out.println("\n--- QUIZ: GOLPES E PHISHING ---");
+        System.out.println("Pergunta: Você recebeu um SMS do 'seu banco' dizendo que sua conta será bloqueada se não clicar num link. O que você faz?");
+        System.out.println("1) Clico rápido para não perder a conta.\n2) Ignoro e entro em contato com o banco pelo canal oficial.");
+        System.out.print("Sua resposta: ");
+        int resp = leitor.nextInt();
+
+        if (resp == 2) {
+            System.out.println("CORRETO! Bancos reais nunca pedem ações urgentes via links em SMS.");
+        } else {
+            System.out.println("CUIDADO! Isso é Phishing. Ao clicar, você entregaria seus dados aos criminosos.");
+        }
+    }
+
+    public static void exibirMitoVerdade(Scanner leitor) {
+        System.out.println("\n--- MITO OU VERDADE ---");
+        System.out.println("Escolha um tema para descobrir:");
+        System.out.println("1. Navegação Anônima\n2. Cadeado nos Sites");
+        int escolha = leitor.nextInt();
+
+        if (escolha == 1) {
+            System.out.println("\n[MITO]: 'Navegar no modo anônimo me deixa invisível contra vírus'.");
+            System.out.println("Realidade: O modo anônimo apenas não salva seu histórico no computador.");
+        } else if (escolha == 2) {
+            System.out.println("\n[VERDADE]: 'O cadeado não garante que o site é honesto'.");
+            System.out.println("Realidade: Ele indica que a conexão é segura, mas o site pode ser de um golpista.");
+        } else {
+            System.out.println("Opção inválida.");
+        }
     }
 }
