@@ -30,7 +30,6 @@ public class SegurancaDigitalQuiz {
                 case 1:
                     System.out.println("\n*** TÓPICO 1: SENHAS SEGURAS ***");
                     
-                    // Pergunta 1
                     System.out.println("\nPergunta 1: Qual das opções abaixo representa a senha mais segura para suas contas?");
                     System.out.println("1) A sua data de nascimento (ex: 15041998)");
                     System.out.println("2) Uma palavra comum seguida de 123 (ex: brasil123)");
@@ -46,7 +45,6 @@ public class SegurancaDigitalQuiz {
                         System.out.println("-> ERRADO. A resposta certa era a 3. Evite dados pessoais ou sequências óbvias que são fáceis de adivinhar por hackers.");
                     }
 
-                    // Pergunta 2
                     System.out.println("\nPergunta 2: É uma boa prática usar a mesma senha para o seu e-mail, redes sociais e banco?");
                     System.out.println("1) Sim, pois assim é mais fácil de lembrar.");
                     System.out.println("2) Não, pois se um cibercriminoso descobrir a senha, ele terá acesso a todas as suas contas.");
@@ -64,7 +62,6 @@ public class SegurancaDigitalQuiz {
                 case 2:
                     System.out.println("\n*** TÓPICO 2: PREVENÇÃO CONTRA GOLPES (PHISHING) ***");
                     
-                    // Pergunta 3
                     System.out.println("\nPergunta 3: Você recebeu um e-mail urgente dizendo ser do seu banco, com um link solicitando a atualização imediata da sua senha. O que você faz?");
                     System.out.println("1) Clico no link e atualizo minha senha rapidamente para não bloquear a conta.");
                     System.out.println("2) Ignoro o e-mail, não clico em nada e abro o aplicativo oficial do banco para verificar se há alguma notificação.");
@@ -78,7 +75,6 @@ public class SegurancaDigitalQuiz {
                         System.out.println("-> ERRADO. A resposta certa era a 2. Clicar em links de e-mails suspeitos pode roubar seus dados bancários.");
                     }
 
-                    // Pergunta 4
                     System.out.println("\nPergunta 4: O que é a Autenticação de Dois Fatores (2FA)?");
                     System.out.println("1) Uma camada extra de segurança que exige um segundo código (ex: SMS ou app) além da senha.");
                     System.out.println("2) Um antivírus que bloqueia dois tipos de vírus diferentes.");
@@ -118,6 +114,6 @@ public class SegurancaDigitalQuiz {
             }
         }
         
-        scanner.close(); // Boa prática: fechar o scanner ao fim do programa
+        scanner.close(); 
     }
 }
