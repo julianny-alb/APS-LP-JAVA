@@ -38,7 +38,7 @@ public class SegurancaDigitalQuiz {
         leitor.close();
     }
 
-    public static void main(String[] args) { /* Este método é apenas ilustrativo da estrutura interna */ }
+    public static void main(String[] args) { /* método é ilustrativo da estrutura interna */ }
     
     public static void executarQuizSenhas(Scanner leitor) {
         System.out.println("\n--- QUIZ: SENHAS ---");
