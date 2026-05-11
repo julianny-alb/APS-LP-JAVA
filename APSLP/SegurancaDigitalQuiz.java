@@ -1,30 +1,33 @@
-import java.util.Scanner; 
+import java.util.Scanner;
 
 public class SegurancaDigitalQuiz {
 
     public static void main(String[] args) {
-        // Objeto Scanner para receber as entradas do usuário 
         Scanner leitor = new Scanner(System.in);
         int opcao = 0;
-        
-        // REQUISITO: Uso obrigatório do WHILE 
-        // O loop garante que o usuário possa navegar e retornar ao menu principal
+
+        //Identificação da Equipe
+        System.out.println("==============================================");
+        System.out.println("   PROJETO APS: GUIA DE SEGURANÇA DIGITAL    ");
+        System.out.println("==============================================");
+        System.out.println("DESENVOLVIDO POR:");
+        System.out.println("- SAMANTHA PINTO RABELO");
+        System.out.println("- ROBERTA RAYCA DE OLIVERIA MENEZES");
+        System.out.println("- JULIANNY ALBUQUERQUE LIMA");
+        System.out.println("==============================================\n");
+
+        //Uso de WHILE para navegação e retorno ao menu
         while (opcao != 4) {
-            // SAÍDA CLARA E ORGANIZADA: Uso de divisórias para melhor visualização 
-            System.out.println("\n==========================================");
-            System.out.println("      GUIA DE SEGURANÇA DIGITAL - APS     ");
-            System.out.println("==========================================");
-            System.out.println("1. Quiz: Senhas e Segurança de Contas");
-            System.out.println("2. Quiz: Golpes e Phishing");
-            System.out.println("3. Mito ou Verdade (Dicas Rápidas)");
-            System.out.println("4. Sair do Programa");
+            System.out.println("---------- MENU PRINCIPAL ----------");
+            System.out.println("1. Quiz: Senhas e Proteção (3 Níveis)");
+            System.out.println("2. Quiz: Golpes e Phishing (3 Níveis)");
+            System.out.println("3. Dica: Mito ou Verdade");
+            System.out.println("4. Sair");
             System.out.print("\nEscolha uma opção: ");
             
-            // Leitura da opção escolhida pelo usuário 
             opcao = leitor.nextInt();
 
-            // REQUISITO: Uso obrigatório do SWITCH 
-            // Gerencia a navegação entre as diferentes áreas do tema 
+            // Uso de SWITCH para guiar o usuário
             switch (opcao) {
                 case 1:
                     executarQuizSenhas(leitor);
@@ -33,44 +36,108 @@ public class SegurancaDigitalQuiz {
                     executarQuizPhishing(leitor);
                     break;
                 case 3:
-                    // Atende a sugestão de incluir "Mito ou Verdade" 
                     exibirMitoVerdade(leitor);
                     break;
                 case 4:
-                    System.out.println("\nEncerrando... Lembre-se: Segurança digital se faz todo dia!");
+                    System.out.println("\nEncerrando... Proteja seus dados sempre!");
                     break;
                 default:
-                    // Caso o usuário digite um número que não está no menu 
                     System.out.println("\nOpção inválida! Tente novamente.");
             }
         }
-        leitor.close(); // Fecha o scanner por boa prática de programação 
+        leitor.close();
     }
 
-    // TÓPICO 1: Aborda a área de Senhas (Requisito de ter pelo menos 2 tópicos) 
+    // TÓPICO 1: SENHAS (Com 3 níveis de dificuldade)
     public static void executarQuizSenhas(Scanner leitor) {
-        System.out.println("\n--- QUIZ: SENHAS ---");
-        System.out.println("Pergunta: Qual destas senhas é considerada a mais forte?");
-        System.out.println("1) 12345678\n2) nome@2024\n3) Cafe!Com#Leite2026");
-        System.out.print("Sua resposta: ");
-        int resp = leitor.nextInt();
+        int pontos = 0;
+        System.out.println("\n--- QUIZ: SENHAS E PROTEÇÃO ---");
 
-        // REQUISITO: Uso obrigatório do IF/ELSE 
-        // Fornece feedback educativo imediato sobre o acerto ou erro 
-        if (resp == 3) {
-            System.out.println("CORRETO! Senhas longas e complexas dificultam ataques.");
+        // Nível Fácil
+        System.out.println("1. [FÁCIL] Qual destas senhas é mais difícil de hackear?");
+        System.out.println("1) 123456 | 2) G@to_Azul_2026");
+        if (leitor.nextInt() == 2) {
+            System.out.println("Correto! Misturar caracteres é essencial.");
+            pontos += 10;
         } else {
-            System.out.println("ERRADO. Senhas curtas ou com dados pessoais são vulneráveis.");
+            System.out.println("Errado. Senhas sequenciais são muito vulneráveis.");
+        }
+
+        // Nível Médio
+        System.out.println("\n2. [MÉDIO] O que é a Autenticação de Dois Fatores (2FA)?");
+        System.out.println("1) Um segundo código de segurança | 2) Uma senha de duas letras");
+        if (leitor.nextInt() == 1) {
+            System.out.println("Correto! É uma camada extra fundamental.");
+            pontos += 20;
+        } else {
+            System.out.println("Errado. É um código enviado ao seu celular ou app.");
+        }
+
+        // Nível Difícil
+        System.out.println("\n3. [DIFÍCIL] Qual a vantagem de usar um Gerenciador de Senhas?");
+        System.out.println("1) Deixar as senhas salvas num post-it | 2) Criar e guardar senhas únicas e fortes");
+        if (leitor.nextInt() == 2) {
+            System.out.println("Excelente! Assim você não repete senhas em vários sites.");
+            pontos += 30;
+        } else {
+            System.out.println("Errado. O gerenciador criptografa suas senhas com segurança.");
+        }
+
+        System.out.println("\n>>> Pontuação Final em Senhas: " + pontos + " pontos!");
+    }
+
+    // TÓPICO 2: GOLPES (Com 3 níveis de dificuldade)
+    public static void executarQuizPhishing(Scanner leitor) {
+        int pontos = 0;
+        System.out.println("\n--- QUIZ: GOLPES E PHISHING ---");
+
+        // Nível Fácil
+        System.out.println("1. [FÁCIL] O que fazer ao receber um link de 'promoção imperdível' de número desconhecido?");
+        System.out.println("1) Clicar na hora | 2) Apagar e ignorar");
+        if (leitor.nextInt() == 2) {
+            System.out.println("Correto! Nunca clique em links suspeitos.");
+            pontos += 10;
+        } else {
+            System.out.println("Cuidado! Isso costuma ser Phishing.");
+        }
+
+        // Nível Médio
+        System.out.println("\n2. [MÉDIO] Como identificar um e-mail falso?");
+        System.out.println("1) Erros de português e remetente estranho | 2) Pela cor do fundo");
+        if (leitor.nextInt() == 1) {
+            System.out.println("Correto! Golpistas costumam cometer erros de escrita.");
+            pontos += 20;
+        } else {
+            System.out.println("Errado. Analise sempre o endereço do remetente.");
+        }
+
+        // Nível Difícil
+        System.out.println("\n3. [DIFÍCIL] O que é 'Typosquatting'?");
+        System.out.println("1) Um site com nome quase igual ao original (ex: g00gle) | 2) Um tipo de antivírus");
+        if (leitor.nextInt() == 1) {
+            System.out.println("Perfeito! É o uso de domínios parecidos para enganar o usuário.");
+            pontos += 30;
+        } else {
+            System.out.println("Errado. É uma técnica de criar sites falsos com nomes parecidos.");
+        }
+
+        System.out.println("\n>>> Pontuação Final em Golpes: " + pontos + " pontos!");
+    }
+
+    // EXTRA: MITO OU VERDADE (Dica do Dia)
+    public static void exibirMitoVerdade(Scanner leitor) {
+        System.out.println("\n--- MITO OU VERDADE ---");
+        System.out.println("Escolha um tema:\n1. Cadeado no Site | 2. Redes Wi-Fi Públicas");
+        int escolha = leitor.nextInt();
+
+        [span_9](start_span)// REQUISITO: Uso de IF para feedback
+        if (escolha == 1) {
+            System.out.println("[VERDADE]: O cadeado significa que a conexão é cifrada, mas o site ainda pode ser golpista.");
+        } else if (escolha == 2) {
+            System.out.println("[MITO]: 'Wi-Fi de shopping é sempre seguro'. Na verdade, seus dados podem ser interceptados.");
         }
     }
-
-    // TÓPICO 2: Aborda a área de Phishing 
-    public static void executarQuizPhishing(Scanner leitor) {
-        System.out.println("\n--- QUIZ: GOLPES E PHISHING ---");
-        System.out.println("Pergunta: Recebeu um link estranho por SMS do banco. O que fazer?");
-        System.out.println("1) Clicar para conferir.\n2) Ignorar e contatar o banco oficial.");
-        System.out.print("Sua resposta: ");
-        int resp = leitor.nextInt();
+}
 
         if (resp == 2) {
             System.out.println("CORRETO! Instituições financeiras não enviam links urgentes por SMS.");
