@@ -3,107 +3,126 @@ import java.util.Scanner;
 public class SegurancaDigitalQuiz {
 
     public static void main(String[] args) {
-        // Objeto Scanner para receber as entradas do usuário 
         Scanner leitor = new Scanner(System.in);
-        
-        // ADIÇÃO: Nomes das Autoras
-        System.out.println("==========================================");
-        System.out.println("   PROJETO APS - DESENVOLVIDO POR:        ");
-        System.out.println(" - SAMANTHA PINTO RABELO                  ");
-        System.out.println(" - ROBERTA RAYCA DE OLIVERIA MENEZES      ");
-        System.out.println(" - JULIANNY ALBUQUERQUE LIMA              ");
-        System.out.println("==========================================\n");
+        int opcao = 0;
 
-        // ADIÇÃO: Pedir o nome do usuário
+        // Cabeçalho com identificação das autoras
+        System.out.println("==============================================");
+        System.out.println("   PROJETO APS: GUIA DE SEGURANÇA DIGITAL    ");
+        System.out.println("==============================================");
+        System.out.println("DESENVOLVIDO POR:");
+        System.out.println("- SAMANTHA PINTO RABELO");
+        System.out.println("- ROBERTA RAYCA DE OLIVERIA MENEZES");
+        System.out.println("- JULIANNY ALBUQUERQUE LIMA");
+        System.out.println("==============================================\n");
+
+        // Interatividade inicial
         System.out.print("Para começar, digite o seu nome: ");
         String nomeUsuario = leitor.nextLine();
-        System.out.println("\nOlá, " + nomeUsuario + "! Bem-vindo(a) ao Guia de Segurança.");
 
-        int opcao = 0;
-        
-        // REQUISITO: Uso obrigatório do WHILE 
-        // O loop garante que o usuário possa navegar e retornar ao menu principal
+        System.out.println("\nOlá, " + nomeUsuario + "! Vamos testar seus conhecimentos.");
+
+        // Estrutura WHILE obrigatória para navegação
         while (opcao != 4) {
-             
-            System.out.println("\n==========================================");
-            System.out.println("      GUIA DE SEGURANÇA DIGITAL - APS     ");
-            System.out.println("==========================================");
-            System.out.println("Usuário atual: " + nomeUsuario);
-            System.out.println("1. Quiz: Senhas e Segurança de Contas");
+            System.out.println("\n---------- MENU PRINCIPAL (" + nomeUsuario + ") ----------");
+            System.out.println("1. Quiz: Senhas e Proteção");
             System.out.println("2. Quiz: Golpes e Phishing");
-            System.out.println("3. Mito ou Verdade (Dicas Rápidas)");
-            System.out.println("4. Sair do Programa");
+            System.out.println("3. Dica: Mito ou Verdade");
+            System.out.println("4. Sair");
             System.out.print("\nEscolha uma opção: ");
             
-            // Leitura da opção escolhida pelo usuário 
             opcao = leitor.nextInt();
 
-            // REQUISITO: Uso obrigatório do SWITCH 
-            // Gerencia a navegação entre as diferentes áreas do tema 
+            // Estrutura SWITCH obrigatória
             switch (opcao) {
                 case 1:
-                    executarQuizSenhas(leitor);
+                    executarQuizSenhas(leitor, nomeUsuario);
                     break;
                 case 2:
-                    executarQuizPhishing(leitor);
+                    executarQuizPhishing(leitor, nomeUsuario);
                     break;
                 case 3:
-                    // Atende a sugestão de incluir "Mito ou Verdade" 
                     exibirMitoVerdade(leitor);
                     break;
                 case 4:
-                    System.out.println("\nEncerrando... Lembre-se, " + nomeUsuario + ": Segurança digital se faz todo dia!");
+                    System.out.println("\nAté logo, " + nomeUsuario + "! Proteja seus dados.");
                     break;
                 default:
-                    // Caso o usuário digite um número que não está no menu 
                     System.out.println("\nOpção inválida! Tente novamente.");
             }
         }
-        leitor.close(); // Fecha o scanner por boa prática de programação 
+        leitor.close();
     }
 
-    // TÓPICO 1: Aborda a área de Senhas (Requisito de ter pelo menos 2 tópicos) 
-    public static void executarQuizSenhas(Scanner leitor) {
-        System.out.println("\n--- QUIZ: SENHAS ---");
-        System.out.println("Pergunta: Qual destas senhas é considerada a mais forte?");
-        System.out.println("1) 12345678\n2) nome@2024\n3) Cafe!Com#Leite2026");
-        System.out.print("Sua resposta: ");
-        int resp = leitor.nextInt();
+    // Tópico 1: Senhas
+    public static void executarQuizSenhas(Scanner leitor, String nome) {
+        int pontos = 0;
+        System.out.println("\n--- QUIZ: SENHAS E PROTEÇÃO (" + nome + ") ---");
 
-        // REQUISITO: Uso obrigatório do IF/ELSE 
-        // Fornece feedback educativo imediato sobre o acerto ou erro 
-        if (resp == 3) {
-            System.out.println("CORRETO! Senhas longas e complexas dificultam ataques.");
+        System.out.println("1. Qual destas senhas é mais forte?");
+        System.out.println("1) 123456 | 2) G@to_Azul_2026");
+        System.out.print("Resposta: ");
+        
+        // Uso de IF obrigatório
+        if (leitor.nextInt() == 2) {
+            System.out.println("Correto!");
+            pontos += 10;
         } else {
-            System.out.println("ERRADO. Senhas curtas ou com dados pessoais são vulneráveis.");
+            System.out.println("Errado.");
         }
-    }
 
-    // TÓPICO 2: Aborda a área de Phishing 
-    public static void executarQuizPhishing(Scanner leitor) {
-        System.out.println("\n--- QUIZ: GOLPES E PHISHING ---");
-        System.out.println("Pergunta: Recebeu um link estranho por SMS do banco. O que fazer?");
-        System.out.println("1) Clicar para conferir.\n2) Ignorar e contatar o banco oficial.");
-        System.out.print("Sua resposta: ");
-        int resp = leitor.nextInt();
-
-        if (resp == 2) {
-            System.out.println("CORRETO! Instituições financeiras não enviam links urgentes por SMS.");
+        System.out.println("\n2. O que é Autenticação de Dois Fatores (2FA)?");
+        System.out.println("1) Um código extra de segurança | 2) Uma senha curta");
+        System.out.print("Resposta: ");
+        if (leitor.nextInt() == 1) {
+            System.out.println("Correto!");
+            pontos += 20;
         } else {
-            System.out.println("CUIDADO! Isso é Phishing, uma técnica para roubar seus dados.");
+            System.out.println("Incorreto.");
         }
+
+        System.out.println("\n>>> Pontuação Final em Senhas: " + pontos + " pontos!");
     }
 
+    // Tópico 2: Golpes
+    public static void executarQuizPhishing(Scanner leitor, String nome) {
+        int pontos = 0;
+        System.out.println("\n--- QUIZ: GOLPES E PHISHING (" + nome + ") ---");
+
+        System.out.println("1. Recebeu um link estranho por SMS. O que faz?");
+        System.out.println("1) Clica para ver | 2) Apaga e ignora");
+        System.out.print("Resposta: ");
+        if (leitor.nextInt() == 2) {
+            System.out.println("Correto!");
+            pontos += 10;
+        } else {
+            System.out.println("Cuidado! Isso é Phishing.");
+        }
+
+        System.out.println("\n2. O que é 'Typosquatting'?");
+        System.out.println("1) Site com nome parecido ao real | 2) Um antivírus");
+        System.out.print("Resposta: ");
+        if (leitor.nextInt() == 1) {
+            System.out.println("Perfeito!");
+            pontos += 30;
+        } else {
+            System.out.println("Incorreto.");
+        }
+
+        System.out.println("\n>>> Pontuação Final em Golpes: " + pontos + " pontos!");
+    }
+
+    // Extra: Mito ou Verdade
     public static void exibirMitoVerdade(Scanner leitor) {
         System.out.println("\n--- MITO OU VERDADE ---");
-        System.out.println("Escolha um tema:\n1. Navegação Anônima\n2. Cadeado nos Sites");
+        System.out.println("1. Cadeado no Browser | 2. Wi-Fi Público");
+        System.out.print("Escolha: ");
         int escolha = leitor.nextInt();
 
-        // Implementação de lógica condicional para educação digital 
         if (escolha == 1) {
-            System.out.println("[MITO]: A navegação anônima não impede vírus, apenas não salva o histórico local.");
+            System.out.println("[VERDADE]: O cadeado indica conexão segura, mas o site pode ser falso.");
         } else if (escolha == 2) {
-            System.out.println("[VERDADE]: O cadeado indica conexão segura, mas o site ainda pode ser malicioso.");
+            System.out.println("[MITO]: Wi-Fi gratuito nem sempre é seguro.");
         }
     }
 }
