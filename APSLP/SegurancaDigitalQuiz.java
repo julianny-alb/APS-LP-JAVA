@@ -129,4 +129,25 @@ public class SegurancaDigitalQuiz {
             System.out.println("Perfeito! Serve para enganar quem digita o endereço errado.");
             pontos += 30;
         } else {
-            System.out.println("Incorreto
+            System.out.println("Incorreto. É a criação de domínios falsos muito similares aos reais.");
+        }
+
+        System.out.println("\n>>> Pontuação Final em Golpes: " + pontos + " pontos!");
+    }
+
+    // Extra: Mito ou Verdade
+    public static void exibirMitoVerdade(Scanner leitor) {
+        System.out.println("\n--- MITO OU VERDADE ---");
+        System.out.println("Escolha um tema:\n1. Cadeado no Browser | 2. Wi-Fi Público");
+        System.out.print("Escolha: ");
+        int escolha = leitor.nextInt();
+
+        if (escolha == 1) {
+            System.out.println("\n[VERDADE]: O cadeado indica que a ligação é segura, mas o site pode ser falso.");
+        } else if (escolha == 2) {
+            System.out.println("\n[MITO]: 'Wi-Fi gratuito é sempre seguro'. Na verdade, hackers podem ler os seus dados.");
+        } else {
+            System.out.println("Opção inválida.");
+        }
+    }
+}
